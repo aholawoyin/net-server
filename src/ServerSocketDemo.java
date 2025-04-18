@@ -36,15 +36,12 @@ public class ServerSocketDemo {
             String clientInput ;
 
             while ((clientInput = input.readLine()) != null){
-
-                System.out.println("Server Client Input "+clientInput);
                 LocalDate date = LocalDate.now();
                 LocalTime time = LocalTime.now();
-
                 String formattedInput = String.format("SERVER RESPONSE: %s %S %S", clientInput,date,time);
-                output.write(formattedInput.toUpperCase());
-
-                if(clientInput.equalsIgnoreCase("bye")) break;
+                output.println(formattedInput.toUpperCase());
+                output.flush();
+                if(clientInput.equalsIgnoreCase("exit")) break;
             }
 
             System.out.println("Sever exited ");
